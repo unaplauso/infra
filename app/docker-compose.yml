@@ -29,7 +29,63 @@ services:
     healthcheck:
       test: ['CMD', 'redis-cli', '-a', '${REDIS_PASSWORD}', '--raw', 'incr', 'ping']
 
-  # TODO: API/web containers, :latest tag
+  gateway:
+    image: unaplauso/api-gateway:latest
+    container_name: unaplauso-gateway
+    restart: always
+    env_file: ./.env
+    ports:
+      - '${GATEWAY_PORT}:${GATEWAY_PORT}'
+    networks:
+      - unaplauso-network
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  auth:
+    image: unaplauso/api-auth:latest
+    container_name: unaplauso-auth
+    restart: always
+    env_file: ./.env
+    ports:
+      - '${AUTH_PORT}:${AUTH_PORT}'
+    networks:
+      - unaplauso-network
+    depends_on:
+      - gateway
+
+  audit:
+    image: unaplauso/api-audit:latest
+    container_name: unaplauso-audit
+    restart: always
+    env_file: ./.env
+    networks:
+      - unaplauso-network
+    depends_on:
+      - gateway
+
+  file:
+    image: unaplauso/api-file:latest
+    container_name: unaplauso-file
+    restart: always
+    env_file: ./.env
+    networks:
+      - unaplauso-network
+    depends_on:
+      - gateway
+
+  # web: # TODO: Hablar con Valen
+  #   image: unaplauso/web:latest
+  #  container_name: unaplauso-web
+  #  restart: always
+  #  env_file: ./.env
+  #  ports:
+  #    - '${WEB_PORT}:${WEB_PORT}'
+  #  networks:
+  #    - unaplauso-network
+  #  depends_on:
 
 volumes:
   db_data:

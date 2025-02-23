@@ -7,7 +7,7 @@ alias dui='$HOME/.local/bin/lazydocker'
 alias d='docker'
 alias dc='docker-compose'
 alias dpullup='dc pull && dc up -d'
-alias dprune='d system prune --volumes -a -f &'
+alias dprune='d system prune --volumes -a -f'
 
 # CI/CD FUNCTIONS
 
