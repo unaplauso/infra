@@ -5,7 +5,7 @@ INFRA_REPO='infra'
 
 to_delete=("vim" "tsch" "mksh")
 to_install=(
-  "git" "fish" "starship" "atuin" "fastfetch"
+  "fish" "starship" "atuin" "fastfetch"
   "fzf" "bat" "eza" "gdu" "btop" "tzselect"
   "docker" "docker-compose" "containerd"
   "nginx" "firewalld" # TODO: cert & SSL

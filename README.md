@@ -8,12 +8,13 @@
 docker login -u unaplauso
 ```
 
-## 2. Clone repo
+## 2. Install git & clone repo
 
 > - _Credentials will be requested_
 > - Change branch to `latest` for testing environment
 
 ```sh
+sudo zypper in -y -l -f --no-recommends git
 git clone --branch stable https://github.com/unaplauso/infra.git
 ```
 
