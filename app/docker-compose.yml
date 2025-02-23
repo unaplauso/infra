@@ -30,7 +30,7 @@ services:
       test: ['CMD', 'redis-cli', '-a', '${REDIS_PASSWORD}', '--raw', 'incr', 'ping']
 
   gateway:
-    image: unaplauso/api-gateway:latest
+    image: unaplauso/api-gateway:stable
     container_name: unaplauso-gateway
     restart: always
     env_file: ./.env
@@ -45,7 +45,7 @@ services:
         condition: service_healthy
 
   auth:
-    image: unaplauso/api-auth:latest
+    image: unaplauso/api-auth:stable
     container_name: unaplauso-auth
     restart: always
     env_file: ./.env
@@ -57,7 +57,7 @@ services:
       - gateway
 
   audit:
-    image: unaplauso/api-audit:latest
+    image: unaplauso/api-audit:stable
     container_name: unaplauso-audit
     restart: always
     env_file: ./.env
@@ -67,7 +67,7 @@ services:
       - gateway
 
   file:
-    image: unaplauso/api-file:latest
+    image: unaplauso/api-file:stable
     container_name: unaplauso-file
     restart: always
     env_file: ./.env
@@ -77,7 +77,7 @@ services:
       - gateway
 
   # web: # TODO: Hablar con Valen
-  #   image: unaplauso/web:latest
+  #   image: unaplauso/web:stable
   #  container_name: unaplauso-web
   #  restart: always
   #  env_file: ./.env
