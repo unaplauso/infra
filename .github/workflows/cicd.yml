@@ -1,17 +1,21 @@
-name: Testing CICD
+name: CICD
 
 on:
   push:
     branches:
+      - stable
       - latest
 
+env:
+  SSH_HOST: ${{ contains(github.ref, "stable") && '18.231.86.72' || secrets.SSH_TESTING_HOST }} # secrets.SSH_PRODUCTION_HOST
+
 jobs:
-  build-and-deploy:
+  cicd:
     runs-on: ubuntu-latest
     steps:
       - uses: appleboy/ssh-action@master
         with:
           script: refresh-infra
           username: ec2-user
-          host: ${{ secrets.SSH_TESTING_HOST }}
+          host: ${{ env.SSH_HOST }}
           key: ${{ secrets.SSH_ROOT_KEY }}

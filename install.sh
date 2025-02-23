@@ -8,7 +8,7 @@ to_install=(
   "git" "fish" "starship" "atuin" "fastfetch"
   "fzf" "bat" "eza" "gdu" "btop" "tzselect"
   "docker" "docker-compose" "containerd"
-  "nginx" "firewalld" # TODO: cert
+  "nginx" "firewalld" # TODO: cert & SSL
   "symbols-only-nerd-fonts" "unicode-emoji"
 )
 
@@ -25,6 +25,7 @@ post_install_scripts()
 
   sudo systemctl enable firewalld
   sudo systemctl start firewalld
+  # FIXME: Firewall allow for docker internal
   sudo firewall-cmd --permanent --add-service=http
   sudo firewall-cmd --permanent --add-service=https
 
@@ -59,4 +60,4 @@ sudo zypper dup --remove-orphaned --no-recommends \
 cp -rfv $INFRA_REPO/. $HOME && rm -rf $INFRA_REPO
 cd $HOME/app
 post_install_scripts
-exit
+fish

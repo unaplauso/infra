@@ -23,7 +23,7 @@ git clone --branch stable https://github.com/unaplauso/infra.git
 ./infra/install.sh
 ```
 
-> `exit` & reconnect SSH
+> Consider exiting & reconnecting
 
 #### 4. `.env` setup
 

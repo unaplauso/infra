@@ -39,10 +39,12 @@ services:
     networks:
       - unaplauso-network
     depends_on:
-      db:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
+      - db
+      - redis
+      # db:
+      #   condition: service_healthy
+      # redis:
+      #   condition: service_healthy
 
   auth:
     image: unaplauso/api-auth:stable
