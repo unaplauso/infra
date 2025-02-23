@@ -7,7 +7,7 @@ on:
       - latest
 
 env:
-  SSH_HOST: ${{ contains(github.ref, "stable") && '18.231.86.72' || secrets.SSH_TESTING_HOST }} # secrets.SSH_PRODUCTION_HOST
+  SSH_HOST: ${{ contains('stable', github.ref) && '18.231.86.72' || secrets.SSH_TESTING_HOST }} # secrets.SSH_PRODUCTION_HOST
 
 jobs:
   cicd:
