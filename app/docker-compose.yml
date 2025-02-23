@@ -29,7 +29,7 @@ services:
     healthcheck:
       test: ['CMD', 'redis-cli', '-a', '${REDIS_PASSWORD}', '--raw', 'incr', 'ping']
 
-  # TODO: API/web containers, :stable tag
+  # TODO: API/web containers, :latest tag
 
 volumes:
   db_data:
