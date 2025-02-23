@@ -23,7 +23,8 @@ post_install_scripts()
 # LO REVIENTO AL QUE TOQUE DE ACÁ PARA ABAJO c: #
 # # # # # # # # # # # # # # # # # # # # # # # # #
 
-# TODO: Activate packagehub
+sudo SUSEConnect -p PackageHub/15.6/x86_64
+sudo zypper refresh
 sudo zypper clean --all
 
 for i in "${to_delete[@]}"

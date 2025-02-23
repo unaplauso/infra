@@ -2,7 +2,7 @@
 
 ```sh
 sudo zypper in -y -l -f --no-recommends git
-wget -O - https://raw.githubusercontent.com/organizacionunaplauso/unaplauso-infra/main/install.sh | bash
+sudo bash -c 'wget -O - https://raw.githubusercontent.com/unaplauso/infra/stable/install.sh | bash'
 ```
 
 TODO: SSH fish -c refresh-infra action
