@@ -1,8 +1,40 @@
 # Un Aplauso SUSE dotfiles
 
+## 1. Docker Hub login
+
+> - _Password will be requested_
+
 ```sh
-sudo zypper in -y -l -f --no-recommends git
-sudo bash -c 'wget -O - https://raw.githubusercontent.com/unaplauso/infra/stable/install.sh | bash'
+docker login -u unaplauso
 ```
 
-TODO: SSH fish -c refresh-infra action
+## 2. Clone repo
+
+> - _Credentials will be requested_
+> - Change branch to `latest` for testing environment
+
+```sh
+git clone --branch stable https://github.com/unaplauso/infra.git
+```
+
+### 3. Installation
+
+```sh
+./infra/install.sh
+```
+
+> `exit` & reconnect SSH
+
+#### 4. `.env` setup
+
+```sh
+e .env
+```
+
+> Fill with environment variables
+
+## 5. Start application :)
+
+```sh
+deploy
+```

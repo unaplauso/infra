@@ -1,0 +1,17 @@
+name: Production CICD
+
+on:
+  push:
+    branches:
+      - stable
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: appleboy/ssh-action@master
+        with:
+          script: refresh-infra
+          username: ec2-user
+          host: ${{ secrets.SSH_PRODUCTION_HOST }}
+          key: ${{ secrets.SSH_ROOT_KEY }}

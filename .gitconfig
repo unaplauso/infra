@@ -1,0 +1,9 @@
+[user]
+	name = Un Aplauso
+	email = unaplausoapp@gmail.com
+[core]
+	editor = nano
+[init]
+	defaultBranch = stable
+[credential]
+	helper = store
