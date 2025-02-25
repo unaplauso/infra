@@ -4,6 +4,7 @@ set -Ux APP_DIR $HOME/app
 alias eenv='nano $APP_DIR/.env'
 
 alias dui='$HOME/.local/bin/lazydocker'
+alias gui='$HOME/.local/bin/lazygit'
 alias d='docker'
 alias dc='docker-compose'
 alias dpullup='dc pull && dc up -d'
