@@ -16,11 +16,13 @@ docker login -u unaplauso
 ```sh
 sudo zypper in -y -l -f --no-recommends git
 git clone --branch stable https://github.com/unaplauso/infra.git
+git config --global credential.helper store
 ```
 
 ### 3. Installation
 
 ```sh
+chmod +x ./infra/install.sh
 ./infra/install.sh
 ```
 

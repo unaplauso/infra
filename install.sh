@@ -5,7 +5,7 @@ INFRA_REPO='infra'
 
 to_delete=("vim" "tsch" "mksh")
 to_install=(
-  "fish" "starship" "atuin" "fastfetch"
+  "fish" "starship" "atuin" "fastfetch" "nano"
   "fzf" "bat" "eza" "gdu" "btop" "tzselect"
   "docker" "docker-compose" "containerd"
   "nginx" "firewalld" # TODO: cert & SSL
@@ -18,6 +18,7 @@ post_install_scripts()
   starship preset no-nerd-font -o $HOME/.config/starship.toml
 
   sudo systemctl enable docker
+  sudo systemctl start docker
   sudo usermod -aG systemd-journal $USER
   sudo usermod -aG docker $USER
 
@@ -29,7 +30,7 @@ post_install_scripts()
   sudo firewall-cmd --permanent --add-service=http
   sudo firewall-cmd --permanent --add-service=https
 
-  sudo nginx -c nginx.conf
+  sudo nginx -c $HOME/app/nginx.conf
 }
 
 # # # # # # # # # # # # # # # # # # # # # # # # #
