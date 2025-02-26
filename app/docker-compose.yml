@@ -41,10 +41,6 @@ services:
     depends_on:
       - db
       - redis
-      # db:
-      #   condition: service_healthy
-      # redis:
-      #   condition: service_healthy
 
   auth:
     image: unaplauso/api-auth:stable
@@ -79,7 +75,7 @@ services:
       - gateway
 
   web:
-    image: unaplauso/api:stable # FIXME: unaplauso/web:stable
+    image: unaplauso/api-gateway:stable # FIXME: unaplauso/web:stable
     container_name: unaplauso-web
     restart: always
     env_file: ./.env
