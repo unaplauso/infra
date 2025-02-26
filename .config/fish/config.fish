@@ -10,10 +10,10 @@ alias dc='docker-compose'
 alias dpullup='dc pull && dc up -d'
 alias dprune='d system prune --volumes -a -f'
 alias ddown='dc down'
-alias rproxy='sudo systemctl reload nginx'
+alias rproxy='sudo systemctl reload nginx && sudo nginx -s reload'
 alias renew='sudo certbot renew --pre-hook "systemctl stop nginx" --post-hook "systemctl start nginx"'
 
-# CI/CD FUNCTIONS
+# CI/CD & TESTING FUNCTIONS
 
 function deploy
   cd $APP_DIR
@@ -29,6 +29,16 @@ function refresh-infra
   renew
   ddown
   deploy
+end
+
+function git-revert
+  git stash push
+  git stash drop
+end
+
+function proxy-test
+  wget http://127.0.0.1:5000/api/health
+  wget http://localhost/api/health
 end
 
 # --- ¡NO TOCAR DESDE ACÁ SIN SABER POR FA!
