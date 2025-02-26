@@ -19,19 +19,20 @@ git clone --branch stable https://github.com/unaplauso/infra.git
 git config --global credential.helper store
 ```
 
-### 3. Installation
+## 3. Installation
 
 ```sh
 chmod +x ./infra/install.sh
 ./infra/install.sh
 ```
 
-> Consider exiting & reconnecting
+> [!IMPORTANT]  
+> Exit & reconnect for usermods to apply
 
-#### 4. `.env` setup
+## 4. `.env` setup
 
 ```sh
-e .env
+eenv
 ```
 
 > Fill with environment variables
@@ -41,3 +42,9 @@ e .env
 ```sh
 deploy
 ```
+
+---
+
+### General docs & aliases
+
+Read [fish config](.config/fish/config.fish) for details.
