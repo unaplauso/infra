@@ -56,6 +56,7 @@ alias jctl='journalctl -p 3 -xb'
 alias fzf='nano (command fzf --preview "cat {}")'
 alias e='nano'
 alias neofetch='fastfetch'
+alias gdu='gdu -c --si $HOME'
 
 alias fm='spf'
 function spf
