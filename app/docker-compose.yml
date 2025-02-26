@@ -78,17 +78,17 @@ services:
     depends_on:
       - gateway
 
-  # web: # TODO: Hablar con Valen
-  #   image: unaplauso/web:stable
-  #  container_name: unaplauso-web
-  #  restart: always
-  #  env_file: ./.env
-  #  ports:
-  #    - '${WEB_PORT}:${WEB_PORT}'
-  #  networks:
-  #    - unaplauso-network
-  #  depends_on:
-  #    - gateway
+  web:
+    image: unaplauso/api:stable # FIXME: unaplauso/web:stable
+    container_name: unaplauso-web
+    restart: always
+    env_file: ./.env
+    ports:
+      - '${WEB_PORT}:${WEB_PORT}'
+    networks:
+      - unaplauso-network
+    depends_on:
+      - gateway
 
 volumes:
   db_data:
