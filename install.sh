@@ -29,6 +29,8 @@ post_install_scripts()
   sudo firewall-cmd --permanent --add-service=http
   sudo firewall-cmd --permanent --add-service=https
 
+  sudo systemctl enable nginx
+  sudo systemctl start nginx
   sudo nginx -c $HOME/app/nginx.conf
   sudo certbot --nginx -m unaplausoapp@gmail.com -d unaplausoapp.com -n --agree-tos
 }

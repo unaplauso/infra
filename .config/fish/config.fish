@@ -10,14 +10,13 @@ alias dc='docker-compose'
 alias dpullup='dc pull && dc up -d'
 alias dprune='d system prune --volumes -a -f'
 alias ddown='dc down'
-alias rproxy='sudo systemctl reload nginx && sudo nginx -s reload'
+alias rproxy='sudo nginx -s stop && sudo nginx -c $APP_DIR/nginx.conf && sudo nginx -s reopen'
 alias renew='sudo certbot renew --pre-hook "systemctl stop nginx" --post-hook "systemctl start nginx"'
 
 # CI/CD & TESTING FUNCTIONS
 
 function deploy
   cd $APP_DIR
-  sudo nginx -c $APP_DIR/nginx.conf
   dpullup
   dprune
 end
@@ -32,7 +31,6 @@ function refresh-infra
   git-revert
   git pull
   cd $APP_DIR
-  rproxy
   renew
   ddown
   deploy
@@ -51,7 +49,7 @@ cd $APP_DIR
 atuin init fish | source
 starship init fish | source
 sudo sysctl vm.swappiness=150
-sudo nginx -c $APP_DIR/nginx.conf
+rproxy
 
 alias ls='eza --color=always --group-directories-first --icons -a -l'
 alias cat='bat'
