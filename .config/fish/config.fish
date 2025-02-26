@@ -17,6 +17,7 @@ alias renew='sudo certbot renew --pre-hook "systemctl stop nginx" --post-hook "s
 
 function deploy
   cd $APP_DIR
+  sudo nginx -c $APP_DIR/nginx.conf
   dpullup
   dprune
 end
@@ -50,6 +51,7 @@ cd $APP_DIR
 atuin init fish | source
 starship init fish | source
 sudo sysctl vm.swappiness=150
+sudo nginx -c $APP_DIR/nginx.conf
 
 alias ls='eza --color=always --group-directories-first --icons -a -l'
 alias cat='bat'
