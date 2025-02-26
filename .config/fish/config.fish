@@ -21,19 +21,20 @@ function deploy
   dprune
 end
 
+function git-revert
+  git stash push
+  git stash drop
+end
+
 function refresh-infra
   cd $HOME
+  git-revert
   git pull
   cd $APP_DIR
   rproxy
   renew
   ddown
   deploy
-end
-
-function git-revert
-  git stash push
-  git stash drop
 end
 
 function proxy-test
