@@ -8,21 +8,21 @@ to_install=(
   "fish" "starship" "atuin" "fastfetch" "nano"
   "fzf" "bat" "eza" "gdu" "btop" "tzselect"
   "docker" "docker-compose" "containerd"
-  "nginx" "firewalld" # TODO: cert & SSL
+  "nginx" "firewalld" "certbot" "python3-certbot-nginx"
   "symbols-only-nerd-fonts" "unicode-emoji"
 )
 
 post_install_scripts()
 {
+  sudo sysctl vm.swappiness=150
+  sudo usermod -aG systemd-journal $USER
+
   sudo chsh -s $(which fish) $USER
   starship preset no-nerd-font -o $HOME/.config/starship.toml
 
   sudo systemctl enable docker
   sudo systemctl start docker
-  sudo usermod -aG systemd-journal $USER
   sudo usermod -aG docker $USER
-
-  sudo sysctl vm.swappiness=150
 
   sudo systemctl enable firewalld
   sudo systemctl start firewalld
@@ -31,6 +31,7 @@ post_install_scripts()
   sudo firewall-cmd --permanent --add-service=https
 
   sudo nginx -c $HOME/app/nginx.conf
+  sudo certbot --nginx -m unaplausoapp@gmail.com -d unaplausoapp.com -n --agree-tos
 }
 
 # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -62,3 +63,4 @@ cp -rfv $INFRA_REPO/. $HOME && rm -rf $INFRA_REPO
 cd $HOME/app
 post_install_scripts
 fish
+echo 'CERRÁ ESTA TERMINAL Y RE-ENTRA PARA QUE SE APLIQUEN LOS USERMODS'

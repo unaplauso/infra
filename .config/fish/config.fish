@@ -9,6 +9,9 @@ alias d='docker'
 alias dc='docker-compose'
 alias dpullup='dc pull && dc up -d'
 alias dprune='d system prune --volumes -a -f'
+alias ddown='dc down'
+alias rproxy='sudo systemctl reload nginx'
+alias renew='sudo certbot renew --pre-hook "systemctl stop nginx" --post-hook "systemctl start nginx"'
 
 # CI/CD FUNCTIONS
 
@@ -22,7 +25,9 @@ function refresh-infra
   cd $HOME
   git pull
   cd $APP_DIR
-  dc down
+  rproxy
+  renew
+  ddown
   deploy
 end
 
