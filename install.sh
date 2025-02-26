@@ -26,7 +26,6 @@ post_install_scripts()
 
   sudo systemctl enable firewalld
   sudo systemctl start firewalld
-  # FIXME: Firewall allow for docker internal
   sudo firewall-cmd --permanent --add-service=http
   sudo firewall-cmd --permanent --add-service=https
 
