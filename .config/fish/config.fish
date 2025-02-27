@@ -9,7 +9,7 @@ alias d='docker'
 alias dc='docker-compose'
 alias dpullup='dc pull && dc up -d'
 alias dprune='d system prune --volumes -a -f'
-alias rproxy='sudo nginx -t && sudo nginx -c $APP_DIR/nginx.conf -s reload'
+alias rproxy='sudo nginx -c $APP_DIR/nginx.conf -t && sudo nginx -c $APP_DIR/nginx.conf -s reload'
 alias renew='sudo certbot renew --pre-hook "systemctl stop nginx" --post-hook "systemctl start nginx"'
 
 # CI/CD & TESTING FUNCTIONS
