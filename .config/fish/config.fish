@@ -15,10 +15,6 @@ alias renew='sudo certbot renew --pre-hook "systemctl stop nginx" --post-hook "s
 # CI/CD & TESTING FUNCTIONS
 
 function deploy
-  # TODO: Remover ------
-  dc down
-  sudo rm -rf .db_data/
-  # --------------------
   dpullup
   dprune
 end
