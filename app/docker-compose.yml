@@ -74,6 +74,26 @@ services:
     depends_on:
       - gateway
 
+  open:
+    image: unaplauso/api-open:stable
+    container_name: unaplauso-open
+    restart: always
+    env_file: ./.env
+    networks:
+      - unaplauso-network
+    depends_on:
+      - gateway
+
+  event:
+    image: unaplauso/api-event:stable
+    container_name: unaplauso-event
+    restart: always
+    env_file: ./.env
+    networks:
+      - unaplauso-network
+    depends_on:
+      - gateway
+
   web:
     image: unaplauso/api-gateway:stable # FIXME: unaplauso/web:stable
     container_name: unaplauso-web
