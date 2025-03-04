@@ -95,7 +95,7 @@ services:
       - gateway
 
   web:
-    image: unaplauso/api-web:stable
+    image: unaplauso/web:stable
     container_name: unaplauso-web
     restart: always
     env_file: ./.env
