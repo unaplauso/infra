@@ -33,7 +33,8 @@ post_install_scripts()
   sudo systemctl start nginx
   sudo nginx -c $HOME/app/nginx.conf
   sudo nginx -t
-  sudo certbot --nginx -m unaplausoapp@gmail.com -d unaplausoapp.com -n --agree-tos
+  # FIXME: sudo certbot --nginx -m lukacerrutti2002@gmail.com -d unaplauso.app -n --agree-tos
+  sudo certbot --nginx -m lukacerrutti2002@gmail.com -d unaplausoapp.com -n --agree-tos
 }
 
 # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -63,6 +64,6 @@ sudo zypper dup --remove-orphaned --no-recommends \
 
 cp -rfv $INFRA_REPO/. $HOME && rm -rf $INFRA_REPO
 cd $HOME/app
+
 post_install_scripts
 fish
-echo 'CERRÁ ESTA TERMINAL Y RE-ENTRA PARA QUE SE APLIQUEN LOS USERMODS'
