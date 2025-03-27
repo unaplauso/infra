@@ -1,5 +1,6 @@
 .db_data
 .git-credentials
+.env
 .env.*
 !*.example
 *.save
