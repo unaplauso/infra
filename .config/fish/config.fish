@@ -3,10 +3,10 @@
 set -Ux APP_DIR $HOME/app
 alias eenv='nano $APP_DIR/.env'
 
-alias dui='$HOME/.local/bin/lazydocker'
+alias dui='sudo $HOME/.local/bin/lazydocker'
 alias gui='$HOME/.local/bin/lazygit'
-alias d='docker'
-alias dc='docker-compose'
+alias d='sudo docker'
+alias dc='sudo docker-compose'
 alias dpullup='dc pull && dc up -d'
 alias dprune='d system prune --volumes -a -f'
 alias rproxy='sudo nginx -c $APP_DIR/nginx.conf -t && sudo nginx -c $APP_DIR/nginx.conf -s reload'
