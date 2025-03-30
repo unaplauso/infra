@@ -7,21 +7,6 @@ x-defaults: &defaults
     - unaplauso-network
 
 services:
-  # TODO: remove db, use RDS / Aurora
-  db:
-    image: postgres:alpine
-    restart: always
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    ports:
-      - '${POSTGRES_PORT}:${POSTGRES_PORT}'
-    networks:
-      - unaplauso-network
-    healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}']
-
   redis:
     image: redis:alpine
     restart: always
@@ -35,25 +20,25 @@ services:
 
   audit:
     <<: *defaults
-    image: unaplauso/api-audit:stable
+    image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/api-audit:stable
 
   auth:
     <<: *defaults
-    image: unaplauso/api-auth:stable
+    image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/api-auth:stable
     ports:
       - '${AUTH_PORT}:${AUTH_PORT}'
 
   event:
     <<: *defaults
-    image: unaplauso/api-event:stable
+    image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/api-event:stable
 
   file:
     <<: *defaults
-    image: unaplauso/api-file:stable
+    image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/api-file:stable
 
   gateway:
     <<: *defaults
-    image: unaplauso/api-gateway:stable
+    image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/api-gateway:stable
     ports:
       - '${GATEWAY_PORT}:${GATEWAY_PORT}'
     depends_on:
@@ -62,19 +47,19 @@ services:
 
   moderation:
     <<: *defaults
-    image: unaplauso/api-moderation:stable
+    image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/api-moderation:stable
 
   open:
     <<: *defaults
-    image: unaplauso/api-open:stable
+    image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/api-open:stable
 
   payment:
     <<: *defaults
-    image: unaplauso/api-payment:stable
+    image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/api-payment:stable
 
   web:
     <<: *defaults
-    image: unaplauso/web:stable
+    image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/web:stable
     ports:
       - '${WEB_PORT}:${WEB_PORT}'
 

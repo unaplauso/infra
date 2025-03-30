@@ -1,11 +1,12 @@
 # Un Aplauso SUSE dotfiles
 
-## 1. Docker Hub login
+## 1. Private repo login
 
-> - _Password will be requested_
+> - _Credentials will be requested_
 
 ```sh
-docker login -u unaplauso
+aws configure
+aws ecr get-login-password --region sa-east-1 | sudo docker login --username AWS --password-stdin 908027417939.dkr.ecr.sa-east-1.amazonaws.com
 ```
 
 ## 2. Install git & clone repo
