@@ -11,6 +11,9 @@ env:
 
 jobs:
   ci:
+    # TODO: AÑADIR aws ecr get-login-password --region sa-east-1 | sudo \
+      # docker login --username AWS --password-stdin 908027417939.dkr.ecr.sa-east-1.amazonaws.com
+      
     runs-on: ubuntu-latest
     steps:
       - uses: appleboy/ssh-action@master
