@@ -6,7 +6,8 @@
 
 ```sh
 aws configure
-aws ecr get-login-password --region sa-east-1 | sudo docker login --username AWS --password-stdin 908027417939.dkr.ecr.sa-east-1.amazonaws.com
+aws ecr get-login-password --region sa-east-1 | sudo \
+  docker login --username AWS --password-stdin 908027417939.dkr.ecr.sa-east-1.amazonaws.com
 ```
 
 ## 2. Install git & clone repo
@@ -16,8 +17,8 @@ aws ecr get-login-password --region sa-east-1 | sudo docker login --username AWS
 
 ```sh
 sudo zypper in -y -l -f --no-recommends git
-git clone --branch stable https://github.com/unaplauso/infra.git
 git config --global credential.helper store
+git clone --branch stable https://github.com/unaplauso/infra.git
 ```
 
 ## 3. Installation
