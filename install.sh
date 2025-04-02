@@ -32,7 +32,7 @@ post_install_scripts()
   sudo systemctl enable nginx
   sudo systemctl start nginx
   sudo nginx -c $HOME/app/nginx.conf
-  sudo nginx -t
+  sudo nginx -t -c $HOME/app/nginx.conf
   sudo certbot -m lukacerrutti2002@gmail.com -d unaplauso.app -n --agree-tos
 }
 
