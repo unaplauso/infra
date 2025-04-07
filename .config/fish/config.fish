@@ -11,6 +11,7 @@ alias dpullup='dc pull && dc up -d'
 alias dprune='d system prune --volumes -a -f'
 alias rproxy='sudo nginx -c $APP_DIR/nginx.conf -t && sudo nginx -c $APP_DIR/nginx.conf -s reload'
 alias renew='sudo certbot renew --pre-hook "systemctl stop nginx" --post-hook "systemctl start nginx"'
+alias aws-login='aws ecr get-login-password --region sa-east-1 | sudo docker login --username AWS --password-stdin 908027417939.dkr.ecr.sa-east-1.amazonaws.com'
 
 # CI/CD & TESTING FUNCTIONS
 
@@ -28,6 +29,7 @@ function pull-infra
 end
 
 function refresh-infra
+  aws-login
   pull-infra
   dc down
   deploy

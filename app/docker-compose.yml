@@ -45,9 +45,9 @@ services:
     ports:
       - '${AUTH_PORT}:${AUTH_PORT}'
 
-  event:
-    <<: *defaults
-    image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/api-event:stable
+  #event:
+  #  <<: *defaults
+  #  image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/api-event:stable
 
   file:
     <<: *defaults
@@ -61,19 +61,19 @@ services:
     depends_on:
       - redis
 
-  moderation:
-    <<: *defaults
-    image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/api-moderation:stable
-    ports:
-      - '${MODERATION_PORT}:${MODERATION_PORT}'
+  #moderation:
+  #  <<: *defaults
+  #  image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/api-moderation:stable
+  #  ports:
+  #    - '${MODERATION_PORT}:${MODERATION_PORT}'
 
   open:
     <<: *defaults
     image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/api-open:stable
 
-  payment:
-    <<: *defaults
-    image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/api-payment:stable
+  #payment:
+  #  <<: *defaults
+  #  image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/api-payment:stable
 
   web:
     <<: *defaults
