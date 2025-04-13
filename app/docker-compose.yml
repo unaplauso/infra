@@ -71,9 +71,9 @@ services:
     <<: *defaults
     image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/api-open:stable
 
-  #payment:
-  #  <<: *defaults
-  #  image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/api-payment:stable
+  payment:
+    <<: *defaults
+    image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/api-payment:stable
 
   web:
     <<: *defaults
