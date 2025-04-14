@@ -13,7 +13,7 @@ to_install=(
 )
 
 post_install_scripts()
-{
+{  
   sudo sysctl vm.swappiness=150
   sudo usermod -aG systemd-journal $USER
 
@@ -24,6 +24,8 @@ post_install_scripts()
   sudo systemctl start docker
   sudo usermod -aG docker $USER
 
+  # FIXME: FIREWALL ROMPE OAUTH
+
   sudo systemctl enable firewalld
   sudo systemctl start firewalld
   sudo firewall-cmd --permanent --add-service=http
@@ -31,9 +33,15 @@ post_install_scripts()
 
   sudo systemctl enable nginx
   sudo systemctl start nginx
-  sudo nginx -c $HOME/app/nginx.conf
+
+  sudo certbot certonly --nginx \
+    -m lukacerrutti2002@gmail.com \
+    -d unaplauso.app \
+    --agree-tos -n -v
+
+  sudo systemctl stop nginx
   sudo nginx -t -c $HOME/app/nginx.conf
-  sudo certbot -m lukacerrutti2002@gmail.com -d unaplauso.app -n --agree-tos
+  sudo nginx -c $HOME/app/nginx.conf
 }
 
 # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -65,4 +73,4 @@ cp -rfv $INFRA_REPO/. $HOME && rm -rf $INFRA_REPO
 cd $HOME/app
 
 post_install_scripts
-fish
+# fish
