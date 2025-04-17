@@ -33,6 +33,7 @@ function refresh-infra
   pull-infra
   dc down
   deploy
+  rproxy
 end
 
 function proxy-test
