@@ -43,16 +43,6 @@ end
 
 # --- ¡NO TOCAR DESDE ACÁ SIN SABER POR FA!
 
-export TERM=xterm-256color
-cd $APP_DIR
-
-atuin init fish | source
-starship init fish | source
-sudo sysctl vm.swappiness=150
-renew
-rproxy
-aws-force-login
-
 alias ls='eza --color=always --group-directories-first --icons -a -l'
 alias cat='bat'
 alias jctl='journalctl -p 3 -xb'
@@ -69,6 +59,17 @@ function spf
       source "$SPF_LAST_DIR"
       rm -f -- "$SPF_LAST_DIR" > /dev/null
   end
+end
+
+if status is-interactive
+  export TERM=xterm-256color
+  cd $APP_DIR
+  atuin init fish | source
+  starship init fish | source
+  sudo sysctl vm.swappiness=150
+  renew
+  rproxy
+  aws-force-login
 end
 
 function fish_greeting
