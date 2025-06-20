@@ -10,7 +10,7 @@ alias dc='sudo docker-compose'
 alias dpullup='dc pull && dc up -d'
 alias dprune='d system prune --volumes -a -f'
 alias kill80='sudo lsof -t -i tcp:80 -s tcp:listen | sudo xargs kill'
-alias rproxy='kill80 && sudo nginx -c $APP_DIR/nginx.conf -t && sudo nginx -c $APP_DIR/nginx.conf'
+alias rproxy='kill80 & sudo nginx -c $APP_DIR/nginx.conf -t && sudo nginx -c $APP_DIR/nginx.conf'
 alias renew='sudo certbot renew --pre-hook "systemctl stop nginx" --post-hook "systemctl start nginx"'
 alias aws-force-login='aws ecr get-login-password --region sa-east-1 | sudo docker login --username AWS --password-stdin 908027417939.dkr.ecr.sa-east-1.amazonaws.com'
 
