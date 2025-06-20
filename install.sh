@@ -13,7 +13,7 @@ to_install=(
 )
 
 post_install_scripts()
-{  
+{
   sudo sysctl vm.swappiness=150
   sudo usermod -aG systemd-journal $USER
 
@@ -36,7 +36,7 @@ post_install_scripts()
 
   sudo certbot certonly --nginx \
     -m lukacerrutti2002@gmail.com \
-    -d unaplauso.app \
+    -d api.unaplauso.app \
     --agree-tos -n -v
 
   sudo systemctl stop nginx
