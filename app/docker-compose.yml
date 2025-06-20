@@ -12,11 +12,12 @@ services:
     restart: always
     command: redis-server --requirepass ${REDIS_PASSWORD}
     ports:
-      - '${REDIS_PORT}:${REDIS_PORT}'
+      - "${REDIS_PORT}:${REDIS_PORT}"
     networks:
       - unaplauso-network
     healthcheck:
-      test: ['CMD', 'redis-cli', '-a', '${REDIS_PASSWORD}', '--raw', 'incr', 'ping']
+      test:
+        ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "--raw", "incr", "ping"]
 
   audit:
     <<: *defaults
@@ -26,7 +27,7 @@ services:
     <<: *defaults
     image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/api-auth:stable
     ports:
-      - '${AUTH_PORT}:${AUTH_PORT}'
+      - "${AUTH_PORT}:${AUTH_PORT}"
 
   event:
     <<: *defaults
@@ -40,15 +41,15 @@ services:
     <<: *defaults
     image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/api-gateway:stable
     ports:
-      - '${GATEWAY_PORT}:${GATEWAY_PORT}'
+      - "${GATEWAY_PORT}:${GATEWAY_PORT}"
     depends_on:
-      - redis
+      - cache
 
   moderation:
     <<: *defaults
     image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/api-moderation:stable
     ports:
-      - '${MODERATION_PORT}:${MODERATION_PORT}'
+      - "${MODERATION_PORT}:${MODERATION_PORT}"
 
   open:
     <<: *defaults
@@ -62,7 +63,7 @@ services:
     <<: *defaults
     image: 908027417939.dkr.ecr.sa-east-1.amazonaws.com/unaplauso/web:stable
     ports:
-      - '${WEB_PORT}:${WEB_PORT}'
+      - "${WEB_PORT}:${WEB_PORT}"
 
 networks:
   unaplauso-network:
